@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sở thích và đăng ký học viên</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      background-color: white;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 8px;
+      width: 350px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 6px 12px;
+      margin-right: 10px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    label {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <form action="#" method="get">
+    <h1>Chọn sở thích của bạn</h1>
+
+    <label>Họ và tên:</label>
+    <input type="text" name="fullname_hobby" placeholder="Nhập họ và tên của bạn">
+
+    <label>Email:</label>
+    <input type="email" name="email_hobby" placeholder="Nhập email của bạn">
+
+    <label>Sở thích:</label><br>
+    <input type="checkbox" name="hobby[]" value="thethao">Thể thao
+    <input type="checkbox" name="hobby[]" value="amnhac">Âm nhạc
+    <input type="checkbox" name="hobby[]" value="docsach">Đọc sách<br>
+    <input type="checkbox" name="hobby[]" value="dulich">Du lịch
+    <input type="checkbox" name="hobby[]" value="choigame">Chơi Game
+    <input type="checkbox" name="hobby[]" value="luotweb">Lướt web<br>
+    <input type="checkbox" name="hobby[]" value="dienanh">Điện ảnh<br><br>
+
+    <input type="submit" value="Gửi">
+    <input type="reset" value="Nhập lại">
+  </form>
+
+  
+  <form action="#" method="post">
+    <h1>Đăng ký học viên</h1>
+
+    <label>Họ và tên:</label>
+    <input type="text" name="fullname_student">
+
+    <label>Ngày sinh:</label>
+    <input type="date" name="birthdate">
+
+    <label>Giới tính:</label><br>
+    <input type="radio" name="gender" value="nam" id="nam">
+    <label for="nam">Nam</label>
+    <input type="radio" name="gender" value="nu" id="nu">
+    <label for="nu">Nữ</label><br><br>
+
+    <label>Địa chỉ:</label>
+    <textarea name="address" rows="4" cols="20"></textarea>
+
+    <label>Lớp:</label>
+    <select name="lop" id="lop">
+      <option value="">— Chọn lớp —</option>
+      <option value="10A1">10A1</option>
+      <option value="10A2">10A2</option>
+      <option value="10A3">10A3</option>
+    </select>
+
+    <label>Email:</label>
+    <input type="email" name="email_student">
+
+    <label>Điện thoại:</label>
+    <input type="tel" name="phone">
+
+    <input type="submit" value="Gửi">
+    <input type="reset" value="Nhập lại">
+  </form>
+
+</body>
+</html>
