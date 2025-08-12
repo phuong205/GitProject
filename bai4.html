@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    /*bài 1*/
+    <script>
+    let vatLy = parseFloat(prompt("Nhập điểm Vật lý:"));
+let hoaHoc = parseFloat(prompt("Nhập điểm Hóa học:"));
+let sinhHoc = parseFloat(prompt("Nhập điểm Sinh học:"));
+
+let tong = vatLy + hoaHoc + sinhHoc;
+let trungBinh = tong / 3;
+
+document.write("Tổng điểm: " + tong + "<br>");
+document.write("Điểm trung bình: " + trungBinh.toFixed(2));
+
+    </script>
+    <br>
+    /*bài 2*/
+     <input type="number" id="temp" placeholder="Nhập nhiệt độ">
+    <select id="unit">
+        <option value="C">Celsius → Fahrenheit</option>
+        <option value="F">Fahrenheit → Celsius</option>
+    </select>
+    <button onclick="convertTemp()">Chuyển đổi</button>
+
+    <p id="result"></p>
+   <script>
+        function convertTemp() {
+            let temp = parseFloat(document.getElementById("temp").value);
+            let unit = document.getElementById("unit").value;
+            let result;
+
+            if (unit === "C") {
+                result = (temp * 9/5) + 32; 
+                document.getElementById("result").innerText = temp + "°C = " + result.toFixed(2) + "°F";
+            } else {
+                result = (temp - 32) * 5/9; 
+                document.getElementById("result").innerText = temp + "°F = " + result.toFixed(2) + "°C";
+            }
+        }
+    </script>
+    /*bài 3*/
+    <script>
+        let r = parseFloat(prompt("Nhập bán kính hình tròn:"));
+let dienTich = Math.PI * r * r;
+document.write("Diện tích hình tròn: " + dienTich.toFixed(2));
+
+    </script>
+    /*bài 4*/
+    <script>
+       let d = parseFloat(prompt("Nhập bán kính hình tròn:"));
+let chuvi = 2*Math.PI  * d;
+document.write("Diện tích hình tròn: " + chuvi.toFixed(2));
+        </script>
+</body>
+</html>

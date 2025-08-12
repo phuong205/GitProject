@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="number" id="so1" placeholder="Nhập số thứ nhất">
+    <input type="number" id="so2" placeholder="Nhập số thứ hai">
+    <button onclick="tinhTong()">Tính Tổng</button>
+    <button onclick="tinhHieu()">Tính Hiệu</button>
+    <script>
+        function tinhTong() {
+            let so1 = parseFloat(document.getElementById("so1").value);
+            let so2 = parseFloat(document.getElementById("so2").value);
+            let tong = so1 + so2;
+            alert("Tổng: " + tong);
+        }
+
+        function tinhHieu() {
+            let so1 = parseFloat(document.getElementById("so1").value);
+            let so2 = parseFloat(document.getElementById("so2").value);
+            let hieu = so1 - so2;
+            alert("Hiệu: " + hieu);
+        }
+    </script>
+
+</body>
+</html>
