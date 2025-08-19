@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toán tử 3 ngôi</title>
+    <title>bài 3 so sánh với 0</title>
 </head>
 <body>
-    <script>
-        let weather = prompt("Hôm nay thời tiết thế nào? ");
+   <script>
+    let n = +prompt("Nhập một số nguyên:");
 
-let message = (weather == "nắng") ? 
-    "Đi chơi thôi!" :
-    (weather == "mưa") ? 
-        "Mang theo ô nhé!" :
-        (weather == "lạnh") ? 
-            "Nhớ mặc áo ấm" :
-            "Không rõ thời tiết";
+    if (n > 0) {
+        document.write(n + " lớn hơn 0");
+    } else if (n < 0) {
+        document.write(n + " nhỏ hơn 0");
+    } else {
+        document.write("Số bằng 0");
+    }
+</script>
 
-alert(message);
-
-    </script>
 </body>
 </html>

@@ -3,40 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>luyện tập với switch case</title>
+    <title>bài 2 tuổi</title>
 </head>
 <body>
-    <script>
-    let diem = +prompt("Nhập điểm của bạn:");
+    
+   <script>
+    let tuoi = +prompt("Nhập tuổi:");
 
-    if (diem > 0 && diem <= 100) {
-        switch (Math.floor(diem / 10)) {
-            case 10: 
-            case 9:
-                alert("Xếp loại: Xuất sắc");
-                break;
-
-            case 8:  
-            case 7:  
-                if (diem >= 75) {
-                    alert("Xếp loại: Giỏi");
-                } else {
-                    alert("Xếp loại: Trung bình");
-                }
-                break;
-
-            case 6:  
-            case 5:  
-                alert("Xếp loại: Trung bình");
-                break;
-
-            default: //
-                alert("Xếp loại: Yếu");
+    if (tuoi >= 0) {
+        if (tuoi >= 15) {
+            document.write("Học sinh đủ điều kiện vào lớp 10");
+        } else {
+            document.write("Học sinh chưa đủ điều kiện vào lớp 10");
         }
     } else {
-        alert("Điểm không hợp lệ (phải từ 1 đến 100)");
+        document.write("Tuổi không hợp lệ (phải ≥ 0)");
     }
 </script>
+
 
 </body>
 </html>

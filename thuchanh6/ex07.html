@@ -3,34 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngày tháng</title>
+    <title>tính hoa hồng</title>
 </head>
 <body>
-    <script>
-    let thang = +prompt("Nhập tháng (1-12):");
+<script>
+    let doanhSo = +prompt("Nhập doanh số bán hàng (VNĐ):");
+    let hoaHong = 0;
 
-    switch (thang) {
-        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-            document.write("Tháng " + thang + " có 31 ngày");
-            break;
+    if (doanhSo > 0) {
+        if (doanhSo < 1000000) {
+            hoaHong = doanhSo * 0.02;
+        } else if (doanhSo <= 5000000) {
+            hoaHong = doanhSo * 0.05;
+        } else {
+            hoaHong = doanhSo * 0.10;
+        }
 
-        case 4: case 6: case 9: case 11:
-            document.write("Tháng " + thang + " có 30 ngày");
-            break;
-
-        case 2:
-            let nam = +prompt("Nhập năm:");
-            if ((nam % 4 === 0 && nam % 100 !== 0) || (nam % 400 === 0)) {
-                document.write("Tháng 2 có 29 ngày (năm nhuận)");
-            } else {
-                document.write("Tháng 2 có 28 ngày");
-            }
-            break;
-
-        default:
-            document.write("Không phải tháng trong năm");
+        document.write("Doanh số: " + doanhSo.toLocaleString() + " VNĐ<br>");
+        document.write("Hoa hồng: " + hoaHong.toLocaleString() + " VNĐ");
+    } else {
+        document.write("⚠️ Vui lòng nhập doanh số hợp lệ (lớn hơn 0)!");
     }
 </script>
+
 
 </body>
 </html>

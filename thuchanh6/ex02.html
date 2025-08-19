@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>luyện tập if else if</title>
+    <title>chia hết </title>
 </head>
 <body>
     <script>
-    let diem = +prompt("Nhập điểm của bạn:");
+    let a = +prompt("Nhập số a:");
+    let b = +prompt("Nhập số b:");
 
-    if (diem > 0 && diem <= 100) {
-        if (diem >= 90) {
-            alert("Xếp loại: Xuất sắc");
-        } else if (diem >= 75) {
-            alert("Xếp loại: Giỏi");
-        } else if (diem >= 50) {
-            alert("Xếp loại: Trung bình");
+    if (b !== 0) {
+        if (a % b === 0) {
+            document.write(a + " chia hết cho " + b);
         } else {
-            alert("Xếp loại: Yếu");
+            document.write(a + " không chia hết cho " + b);
         }
     } else {
-        alert("Điểm không hợp lệ (phải từ 1 đến 100)");
+        document.write("hãy nhập số khác không");
     }
 </script>
+
 
 </body>
 </html>

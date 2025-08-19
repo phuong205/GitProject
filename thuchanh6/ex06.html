@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiểm tra năm nhuận</title>
+    <title>`điểm trung bình</title>
 </head>
 <body>
     <script>
-    let nam = +prompt("Nhập năm:");
 
-    if ((nam % 4 === 0 && nam % 100 !== 0) || (nam % 400 === 0)) {
-        document.write(nam + " là năm nhuận");
+    let kt = +prompt("Nhập điểm kiểm tra:");
+    let gk = +prompt("Nhập điểm giữa kỳ:");
+    let ck = +prompt("Nhập điểm cuối kỳ:");
+
+    let dtb = (kt + gk*2 + ck*3) / 6;
+    let xepLoai = "";
+
+    if (dtb >= 8) {
+        xepLoai = "Giỏi";
+    } else if (dtb >= 6.5) {
+        xepLoai = "Khá";
+    } else if (dtb >= 5) {
+        xepLoai = "Trung bình";
     } else {
-        document.write(nam + " không phải là năm nhuận");
+        xepLoai = "Yếu";
     }
+
+    document.write("Điểm trung bình: " + dtb.toFixed(2) + " - Xếp loại: " + xepLoai);
+
+
 </script>
 </body>
 </html>
