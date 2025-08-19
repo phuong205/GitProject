@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>luyện tập if else if</title>
+</head>
+<body>
+    <script>
+    let diem = +prompt("Nhập điểm của bạn:");
+
+    if (diem > 0 && diem <= 100) {
+        if (diem >= 90) {
+            alert("Xếp loại: Xuất sắc");
+        } else if (diem >= 75) {
+            alert("Xếp loại: Giỏi");
+        } else if (diem >= 50) {
+            alert("Xếp loại: Trung bình");
+        } else {
+            alert("Xếp loại: Yếu");
+        }
+    } else {
+        alert("Điểm không hợp lệ (phải từ 1 đến 100)");
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính chỉ số cho cơ thể</title>
+</head>
+<body>
+    <script>
+    let weight = +prompt("Nhập cân nặng của bạn (kg):");
+    let height = +prompt("Nhập chiều cao của bạn (m):");
+
+    if (weight > 0 && height > 0) {
+        let bmi = weight / (height * height);
+        let message = "";
+
+        if (bmi < 18.5) {
+            message = "Gầy";
+        } else if (bmi < 25) {
+            message = "Bình thường";
+        } else if (bmi < 30) {
+            message = "Thừa cân";
+        } else {
+            message = "Béo phì";
+        }
+
+        document.write("Chỉ số BMI của bạn là: " + bmi.toFixed(2) + " - " + message);
+    } else {
+        document.write("⚠️ Vui lòng nhập số hợp lệ (lớn hơn 0)!");
+    }
+</script>
+
+</body>
+</html>

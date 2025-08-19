@@ -4,10 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   <script src="test.js"></script>
+   <!-- <script src="test.js"></script> -->
 </head>
 <body>
+<!-- <script>
+let so = prompt("Nhập số (1-7):");
+so = Number(so);
+
+switch (so) {
+    case 1:
+        console.log("Chủ nhật");
+        break;
+    case 2:
+        console.log("Thứ hai");
+        break;
+    case 3:
+        console.log("Thứ ba");
+        break;
+    case 4:
+        console.log("Thứ tư");
+        break;
+    case 5:
+        console.log("Thứ năm");
+        break;
+    case 6:
+        console.log("Thứ sáu");
+        break;
+    case 7:
+        console.log("Thứ bảy");
+        break;
+    default:
+        console.log("Không phải ngày trong tuần");
+}
+
+
+</script> -->
+
+<!-- <script>
+    let diem = prompt("Nhập điểm của b:");   
+    diem = Number(diem);               
+
+    if (diem >= 0 && diem <= 100) {
+        if (diem >= 75) {
+            document.write("bạn đã qua module");
+        } else {
+            let diem2 = prompt("Bạn đã không vượt qua, hãy nhập lại điểm lần 2:");
+            diem2 = Number(diem2);
+
+            if (diem2 >= 0 && diem2 <= 100) {
+                if (diem2 >= 75) {
+                    document.write("bạn đã qua");
+                } else {
+                    document.write("bạn vẫn chưa qua");
+                }
+            } 
+        }
+    } else {
+        document.write("Điểm không hợp lệ");
+    }
     
-   <button id="showMessage"onclick="showMessage()">Click me</button>
+</script> -->
+<!-- hiển thị số ngày của 1 tháng bất kỳ -->
+<!-- <script>
+    let thang = +prompt("Nhập tháng (1-12):");
+    switch (thang){ -->
+       <script>
+    let thang = +prompt("Nhập tháng (1-12):");
+
+    switch (thang) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            document.write("Tháng " + thang + " có 31 ngày");
+            break;
+
+        case 4: case 6: case 9: case 11:
+            document.write("Tháng " + thang + " có 30 ngày");
+            break;
+
+        case 2:
+            let nam = +prompt("Nhập năm:");
+            if ((nam % 4 === 0 && nam % 100 !== 0) || (nam % 400 === 0)) {
+                document.write("Tháng 2 có 29 ngày (năm nhuận)");
+            } else {
+                document.write("Tháng 2 có 28 ngày");
+            }
+            break;
+
+        default:
+            document.write("Không phải tháng trong năm");
+    }
+
+   
+        
+</script>
 </body>
 </html>
