@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giá tiền điện</title>
+</head>
+<body>
+    <script>
+          let kWh = Number(prompt("Nhập số điện tiêu thụ (kWh):"));
+    let gia = 0;
+    if(kWh <= 50) {
+        gia = kWh * 1678;
+    } else if(kWh <= 100) {
+        gia = 50 * 1678 + (kWh - 50) * 1734;
+    } else if(kWh <= 200) {
+        gia = 50 * 1678 + 50 * 1734 + (kWh - 100) * 2014;
+    } else if(kWh <= 300) {
+        gia = 50 * 1678 + 50 * 1734 + 100 * 2014 + (kWh - 200) * 2536;
+    } else {
+        gia = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + (kWh - 300) * 2834;
+    }
+    document.write("Số tiền điện phải trả: " + gia + " đồng");
+    </script>
+</body>
+</html>

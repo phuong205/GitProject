@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải phương trình bậc 1</title>
+</head>
+<body>
+    <script>
+        let a=Number (prompt("nhập số 1:"));
+        let b=Number (prompt("nhập số 2:"));
+        if(a==0&&b==0){
+            document.write ("phương trình vô số nghiệm")
+        }
+        else if (a==0&&b!=0){
+           
+            document.write("phương trình vô nghiệm")
+        }
+        else {
+              let x=(-b)/a;
+            document.write("phương trình có nghiệm:"+x)
+        }
+    </script>
+</body>
+</html>
