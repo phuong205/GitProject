@@ -1,0 +1,16 @@
+<script>
+let n = Number(prompt("Nhập số nguyên dương:"));
+
+
+if (n <= 0 || !Number.isInteger(n)) {
+  alert("Vui lòng nhập một số nguyên dương hợp lệ!");
+} else {
+  let giaiThua = 1;
+  for (let i = 1; i <= n; i++) {
+    giaiThua *= i;
+  }
+  document.write(`Giai thừa của ${n} là: ${giaiThua}<br>`);
+}
+</script>
+
+<!-- tính giai thừa của một số -->

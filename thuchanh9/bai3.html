@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game đoán số</title>
+</head>
+<body>
+  <button onclick="choiGame()">Chơi</button>
+
+<script>
+function choiGame() {
+
+
+  let soLonNhat = Number(prompt("Số bạn muốn đoán trong khoảng lớn nhất là bao nhiêu?"));
+
+  if (isNaN(soLonNhat) || soLonNhat <= 0) {
+    alert("Vui lòng nhập một số hợp lệ lớn hơn 0!");
+    return;
+  }
+
+  let lanDoan = 0;
+  let soLanToiDa = 3;
+
+  while (lanDoan < soLanToiDa) {
+    lanDoan++;
+    let soDoan = Number(prompt(`Lần đoán thứ ${lanDoan}: Nhập số bạn đoán:`));
+
+    if (isNaN(soDoan)) {
+      alert("Bạn phải nhập số!");
+      lanDoan--; 
+      continue;
+    }
+
+    if (soDoan === soLonNhat) {
+      alert("Chúc mừng! Bạn đoán đúng!");
+      return; 
+    } else if (soDoan > soLonNhat) {
+      alert("Số bạn đoán lớn hơn.");
+    } else {
+      alert("Số bạn đoán bé hơn.");
+    }
+  }
+
+  alert(`Bạn đã hết lượt. Số đúng là: ${soLonNhat}`);
+}
+</script>
+</body>
+</html>
