@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Xây dựng game caro đơn giản. Bàn cờ hiển thị đơn giản gồm N dòng và M cột. Mỗi giá trị trong cột nhận giá trị mặc định là 0. -->
+<script>
+let n = Number(prompt("Nhập số dòng:"));
+let m = Number(prompt("Nhập số cột:"));
+let board = [];
+for (let i = 0; i < n; i++) {
+    board[i] = [];
+    for (let j = 0; j < m; j++) {
+        board[i][j] = 0;
+    }
+}
+for (let i = 0; i < n; i++) {
+    document.write(board[i].join(" ") + "<br>");
+}
+
+</script>
+</body>
+</html>

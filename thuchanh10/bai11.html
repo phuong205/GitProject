@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bai6</title>
+</head>
+<body>
+    <script>
+        let arr = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+let V = 25;
+let found = false;
+
+for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === V) {
+        found = true;
+        break;
+    }
+}
+
+if (found) {
+    document.write(V + " is in the array");
+} else {
+    document.write(V + " is not in the array");
+}
+
+    </script>
+</body>
+</html>
