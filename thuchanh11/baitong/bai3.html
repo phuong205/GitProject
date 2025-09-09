@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Mô tả: Viết chương trình nhập vào một chuỗi và chuyển đổi tất cả các ký tự chữ thường thành chữ hoa, đồng thời chuyển chữ hoa thành chữ thường. -->
+<script>
+    function toggleCase(str) {
+        let toggledStr = '';
+        for (let i = 0; i < str.length; i++) {
+            let char = str[i];
+            if (char === char.toUpperCase()) {
+                toggledStr += char.toLowerCase();
+            } else {
+                toggledStr += char.toUpperCase();
+            }
+        }
+        return toggledStr;
+    }
+
+    let input = "Hello World!"; 
+    let output = toggleCase(input);
+
+    document.write("Chuỗi ban đầu: " + input + "<br>");
+    document.write("Chuỗi sau khi chuyển đổi: " + output);
+</script>
+</body>
+</html>

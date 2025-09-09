@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Textarea chữ cố định</title>
+  <style>
+    textarea {
+      width: 400px;    
+      height: 150px;   
+      font-size: 20px; 
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+ 
+  
+  <textarea id="fixedInput" placeholder="Gõ gì cũng được"></textarea>
+
+  <script>
+    const fixedText = "Xin chào bạn";  
+    const input = document.getElementById("fixedInput");
+
+    input.addEventListener("input", function () {
+      input.value = fixedText;
+    });
+  </script>
+</body>
+</html>

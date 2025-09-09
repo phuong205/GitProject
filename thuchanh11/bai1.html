@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Từ điển Anh - Việt đơn giản</title>
+</head>
+<body>
+  <h2>Từ điển Anh - Việt</h2>
+  <form onsubmit="timKiem(); return false;">
+    <label for="tuNhap">Nhập từ tiếng Anh:</label>
+    <input type="text" id="tuNhap" required>
+    <button type="submit">Tìm kiếm</button>
+  </form>
+
+  <p id="ketQua"></p>
+
+  <script>
+
+    let eng = ["hello", "goodbye", "cat", "dog", "school"];
+    let vie = ["xin chào", "tạm biệt", "con mèo", "con chó", "trường học"];
+
+    function timKiem() {
+      let tu = document.getElementById("tuNhap").value.trim().toLowerCase();
+      let viTri = eng.indexOf(tu); 
+
+      if (viTri !== -1) {
+        document.getElementById("ketQua").innerText = 
+          "Nghĩa tiếng Việt: " + vie[viTri];
+      } else {
+        document.getElementById("ketQua").innerText = "Không tìm thấy";
+      }
+    }
+  </script>
+</body>
+</html>
