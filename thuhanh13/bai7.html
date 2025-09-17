@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bai9-2</title>
+</head>
+<body>
+ <script>
+    function kiemTraKyTu(arr, ch) {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === ch) count++;
+    }
+    return count > 0 ? count : -1;
+}
+
+
+document.write("Ký tự 'a' xuất hiện trong ['a','b','c','a'] = " + kiemTraKyTu(['a','b','c','a'], 'a') + "<br>");
+document.write("Ký tự 'x' xuất hiện trong ['m','n','o'] = " + kiemTraKyTu(['m','n','o'], 'x') + "<br>");
+
+ </script>
+</body>
+</html>

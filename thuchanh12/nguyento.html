@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiem tra số nguyên tố</title>
+</head>
+<body>
+    <script>
+function isPrime(number) {
+    if (number < 2) return false;
+    for (let i = 2; i <= Math.sqrt(number); i++) {
+        if (number % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+let input = prompt("Nhập một số:"); 
+let num = parseInt(input);
+
+alert(isPrime(num)); 
+
+    </script>
+</body>
+</html>

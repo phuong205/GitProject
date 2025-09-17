@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bai2-2</title>
+</head>
+<body>
+     <script>
+        const PI = Math.PI;
+
+    
+        function dienTichHinhTron(r) {
+            return PI * r * r;
+        }
+
+     
+        function chuViHinhTron(r) {
+            return 2 * PI * r;
+        }
+
+     
+        let r = prompt("Nhập bán kính hình tròn:");
+        r = parseFloat(r);
+
+       
+        document.write("Bán kính: " + r + "<br>");
+        document.write("Diện tích hình tròn: " + dienTichHinhTron(r).toFixed(2) + "<br>");
+        document.write("Chu vi hình tròn: " + chuViHinhTron(r).toFixed(2));
+    </script>
+</body>
+</html>
