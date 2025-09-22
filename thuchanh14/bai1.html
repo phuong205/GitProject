@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô tả Hình chữ nhật bằng OOP</title>
+
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="300"></canvas>
+
+  <script>
+    class Rectangle {
+      constructor(length, width, x = 50, y = 50) {
+        this.length = length;
+        this.width = width;
+        this.x = x;
+        this.y = y;
+      }
+
+      draw(ctx, color = "lightblue") {
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.length, this.width);
+      }
+    }
+
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let rect = new Rectangle(200, 100, 100, 100);
+    rect.draw(ctx, "blue");
+  </script>
+  
+</body>
+</html>
