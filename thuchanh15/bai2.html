@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Công tắc và Bóng đèn</title>
+</head>
+<body>
+<script>
+
+class BongDen {
+    constructor() {
+        this.trangThai = false; // false = tắt, true = bật
+    }
+
+    thayDoiTrangThai(trangThaiMoi) {
+        this.trangThai = trangThaiMoi;
+    }
+
+    hienThiTrangThai() {
+        if (this.trangThai) {
+            document.write("Bóng đèn: Đang BẬT<br>");
+        } else {
+            document.write("Bóng đèn: Đang TẮT<br>");
+        }
+    }
+}
+
+
+class CongTac {
+    constructor() {
+        this.trangThai = false; 
+        this.bongDen = null;  
+    }
+
+    ketNoi(bongDen) {
+        this.bongDen = bongDen;
+    }
+
+    batTat() {
+        this.trangThai = !this.trangThai; 
+        if (this.bongDen) {
+            this.bongDen.thayDoiTrangThai(this.trangThai);
+        }
+    }
+}
+
+
+let bongDen = new BongDen();
+let congTac = new CongTac();
+
+
+congTac.ketNoi(bongDen);
+
+for (let i = 1; i <= 10; i++) {
+    document.write("<b>Lần " + i + ":</b><br>");
+    congTac.batTat(); 
+    bongDen.hienThiTrangThai();
+    document.write("<br>");
+}
+</script>
+</body>
+</html>
