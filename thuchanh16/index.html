@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Quản lý sản phẩm</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .product-card { transition: 0.3s; }
+    .product-card:hover { transform: scale(1.03); }
+    .product-img { height: 150px; object-fit: cover; border-radius: 10px; }
+  </style>
+</head>
+<body class="p-4">
+  <div class="container">
+    <h1 class="text-center mb-4">Quản Lý Sản Phẩm cho cửa hàng GOARGEAR</h1>
+
+    <!-- Form thêm sản phẩm -->
+    <div class="card p-3 mb-4 shadow">
+      <h4>Thêm sản phẩm mới</h4>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <input id="productName" type="text" class="form-control" placeholder="Tên sản phẩm">
+        </div>
+        <div class="col-md-3">
+          <input id="productPrice" type="number" class="form-control" placeholder="Giá tiền (VND)">
+        </div>
+        <div class="col-md-3">
+          <input id="productImage" type="file" accept="image/*" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary w-100" onclick="addProduct()">Thêm</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ô tìm kiếm -->
+    <div class="input-group mb-4">
+      <input id="searchBox" type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+      <button class="btn btn-outline-secondary" onclick="renderProducts()">Tìm</button>
+    </div>
+
+    <!-- Danh sách sản phẩm -->
+    <div id="productList" class="row g-3"></div>
+  </div>
+
+  <!-- Form sửa sản phẩm (ẩn) -->
+  <div id="editForm" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-none justify-content-center align-items-center">
+    <div class="card p-4" style="width: 400px;">
+      <h4 class="mb-3 text-center">Cập nhật sản phẩm</h4>
+      <input type="hidden" id="editIndex">
+      <div class="mb-3">
+        <label class="form-label">Tên sản phẩm</label>
+        <input type="text" id="editName" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Giá tiền (VND)</label>
+        <input type="number" id="editPrice" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Ảnh sản phẩm</label>
+        <input type="file" id="editImage" accept="image/*" class="form-control">
+      </div>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-success" onclick="saveEdit()">Lưu</button>
+        <button class="btn btn-secondary" onclick="closeEditForm()">Hủy</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    // Thêm sản phẩm
+    function addProduct() {
+      const name = document.getElementById("productName").value.trim();
+      const price = parseFloat(document.getElementById("productPrice").value);
+      const imageInput = document.getElementById("productImage");
+
+     if (!/^[A-Za-zÀ-ỹ\s]+$/.test(name)) {
+  alert("Tên sản phẩm chỉ được chứa chữ cái!");
+  return;
+}
+      if (price <= 0 || isNaN(price)) {
+        alert("Giá tiền phải lớn hơn 0!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const newProduct = { name, price, image: e.target.result };
+        products.push(newProduct);
+        localStorage.setItem("products", JSON.stringify(products));
+        renderProducts();
+        document.getElementById("productName").value = "";
+        document.getElementById("productPrice").value = "";
+        imageInput.value = "";
+      };
+      if (imageInput.files[0]) reader.readAsDataURL(imageInput.files[0]);
+      else {
+        alert("Vui lòng chọn ảnh sản phẩm!");
+      }
+    }
+
+    // Hiển thị danh sách
+    function renderProducts() {
+      const list = document.getElementById("productList");
+      const search = document.getElementById("searchBox").value.toLowerCase();
+      list.innerHTML = "";
+
+      products
+        .filter(p => p.name.toLowerCase().includes(search))
+        .forEach((p, i) => {
+          const card = document.createElement("div");
+          card.className = "col-md-3";
+          card.innerHTML = `
+            <div class="card product-card shadow-sm">
+              <img src="${p.image}" class="product-img card-img-top" alt="">
+              <div class="card-body text-center">
+                <h5>${p.name}</h5>
+                <p class="text-success fw-bold">${p.price.toLocaleString()} VND</p>
+                <button class="btn btn-warning btn-sm me-2" onclick="openEditForm(${i})">Sửa</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteProduct(${i})">Xóa</button>
+              </div>
+            </div>
+          `;
+          list.appendChild(card);
+        });
+    }
+
+    // Mở form sửa
+    function openEditForm(index) {
+      document.getElementById("editIndex").value = index;
+      document.getElementById("editName").value = products[index].name;
+      document.getElementById("editPrice").value = products[index].price;
+      document.getElementById("editForm").classList.remove("d-none");
+    }
+
+    // Đóng form sửa
+    function closeEditForm() {
+      document.getElementById("editForm").classList.add("d-none");
+    }
+
+    // Lưu cập nhật
+    function saveEdit() {
+      const index = document.getElementById("editIndex").value;
+      const name = document.getElementById("editName").value.trim();
+      const price = parseFloat(document.getElementById("editPrice").value);
+      const imageInput = document.getElementById("editImage");
+
+      if (!/^(?=.*[A-Za-z])[A-Za-z0-9\s]+$/.test(name)) {
+        alert("Tên sản phẩm phải chứa ít nhất một chữ cái!");
+        return;
+      }
+      if (price <= 0 || isNaN(price)) {
+        alert("Giá tiền phải lớn hơn 0!");
+        return;
+      }
+
+      if (imageInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          products[index].image = e.target.result;
+          updateProduct(index, name, price);
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+      } else {
+        updateProduct(index, name, price);
+      }
+    }
+
+    function updateProduct(index, name, price) {
+      products[index].name = name;
+      products[index].price = price;
+      localStorage.setItem("products", JSON.stringify(products));
+      renderProducts();
+      closeEditForm();
+    }
+
+    // Xóa
+    function deleteProduct(index) {
+      if (confirm("Bạn có chắc muốn xóa sản phẩm này?")) {
+        products.splice(index, 1);
+        localStorage.setItem("products", JSON.stringify(products));
+        renderProducts();
+      }
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>
