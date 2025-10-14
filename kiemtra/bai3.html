@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quản lý sách đơn giản</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    #btnShowForm {
+      display: block;
+      margin: 0 auto 20px auto;
+      padding: 8px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #formAdd {
+      display: none; 
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #formAdd label {
+      min-width: 80px;
+      font-weight: bold;
+    }
+
+    #formAdd input {
+      padding: 5px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 150px;
+    }
+
+    #formAdd button {
+      padding: 7px 15px;
+      cursor: pointer;
+    }
+
+    #msg {
+      width: 100%;
+      text-align: center;
+      color: red;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    tbody button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>Quản lý sách</h2>
+
+  <button id="btnShowForm" onclick="showForm()">Thêm sách</button>
+
+  <div id="formAdd">
+    <label>Mã sách:</label>
+    <input type="text" id="bookId" placeholder="Ví dụ: 10001">
+    <label>Tên sách:</label>
+    <input type="text" id="bookName" placeholder="Tên sách">
+    <label>Năm XB:</label>
+    <input type="number" id="bookYear" placeholder="4 chữ số">
+    <label>Số quyển:</label>
+    <input type="number" id="bookQty" placeholder="Số quyển">
+    <button onclick="addBook()">Thêm sách</button>
+    <p id="msg"></p>
+  </div>
+
+  <table id="tblBooks">
+    <thead>
+      <tr>
+        <th>Mã</th><th>Tên</th><th>Năm</th><th>Số quyển</th><th>Tình trạng</th><th>Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+  </table>
+<div style="
+  margin-top: 20px; 
+  text-align: center; 
+  display: flex; 
+  justify-content: center; 
+  gap: 20px;
+  flex-wrap: wrap;
+">
+  <button class="menu-btn">Thêm sách đã có</button>
+  <button class="menu-btn">Thêm sách mới</button>
+  <button class="menu-btn">Mượn sách</button>
+  <button class="menu-btn">Hiển thị sách nhiều nhất</button>
+</div>
+  <script>
+    let books = [];
+
+    function showForm() {
+      document.getElementById("formAdd").style.display = "flex";
+      document.getElementById("btnShowForm").style.display = "none";
+    }
+
+    function validateId(id) {
+      if (id.length !== 5) return false;
+      let c0 = id.charAt(0);
+      if (!"12345".includes(c0)) return false;
+      for (let i = 1; i < 5; i++) {
+        let c = id.charAt(i);
+        if (c < "0" || c > "9") return false;
+      }
+      return true;
+    }
+
+    function validateYear(year) {
+      const currentYear = new Date().getFullYear();
+      return Number.isInteger(year) && year >= 1900 && year <= currentYear;
+    }
+
+    function validateQty(q) {
+      return Number.isInteger(q) && q >= 0;
+    }
+
+    function validateName(name) {
+      // cho phép chữ cái có dấu tiếng Việt và khoảng trắng
+      const regex = /^[\p{L}\s]+$/u;
+      return regex.test(name);
+    }
+
+    function addBook() {
+      const id = document.getElementById("bookId").value.trim();
+      const name = document.getElementById("bookName").value.trim();
+      const year = parseInt(document.getElementById("bookYear").value, 10);
+      const qty = parseInt(document.getElementById("bookQty").value, 10);
+      const msg = document.getElementById("msg");
+      msg.textContent = "";
+
+      if (!validateId(id)) {
+        msg.textContent = "Mã sách sai định dạng!";
+        return;
+      }
+
+      if (books.some(b => b.id === id)) {
+        msg.textContent = "Mã sách đã tồn tại!";
+        return;
+      }
+
+      if (!name || !validateName(name)) {
+        msg.textContent = "Tên sách chỉ được chứa chữ cái và dấu tiếng Việt!";
+        return;
+      }
+
+      if (isNaN(year) || !validateYear(year)) {
+        msg.textContent = `Năm xuất bản phải từ 1900 đến ${new Date().getFullYear()}!`;
+        return;
+      }
+
+      if (isNaN(qty) || !validateQty(qty)) {
+        msg.textContent = "Số quyển phải là số nguyên ≥ 0!";
+        return;
+      }
+
+      let status = qty > 0;
+      let book = { id, name, year, qty, status };
+      books.push(book);
+      renderTable();
+      clearForm();
+    }
+
+    function clearForm() {
+      document.getElementById("bookId").value = "";
+      document.getElementById("bookName").value = "";
+      document.getElementById("bookYear").value = "";
+      document.getElementById("bookQty").value = "";
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById("tblBooks").getElementsByTagName("tbody")[0];
+      tbody.innerHTML = "";
+
+      books.forEach(b => {
+        let tr = document.createElement("tr");
+
+        function td(text) {
+          let td = document.createElement("td");
+          td.textContent = text;
+          tr.appendChild(td);
+        }
+
+        td(b.id);
+        td(b.name);
+        td(b.year);
+        td(b.qty);
+        td(b.status ? "Còn" : "Hết");
+
+        let tdAct = document.createElement("td");
+        let btn = document.createElement("button");
+        btn.textContent = "Mượn 1";
+        btn.onclick = function() {
+          if (b.qty > 0) {
+            b.qty--;
+            if (b.qty === 0) b.status = false;
+            renderTable();
+          } else {
+            alert("Không còn sách để mượn!");
+          }
+        };
+        tdAct.appendChild(btn);
+        tr.appendChild(tdAct);
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    renderTable();
+  </script>
+</body>
+</html>

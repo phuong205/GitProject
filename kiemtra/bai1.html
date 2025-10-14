@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tính trung bình số lẻ ở vị trí chẵn</title>
+</head>
+<body>
+  <script>
+    
+    let n = parseInt(prompt("Nhập số phần tử n (n ≤ 50):"));
+    if (isNaN(n) || n < 1 || n > 50) {
+      alert("Giá trị n không hợp lệ");
+    } else {
+      let arr = [];
+      for (let i = 0; i < n; i++) {
+        let value = parseInt(prompt("Nhập phần tử thứ " + i + ":"));
+        if (isNaN(value)) {
+          alert("Bạn phải nhập số nguyên.");
+          i--; 
+        } else {
+          arr.push(value);
+        }
+      }
+
+      let sum = 0;
+      let count = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (i % 2 === 0 && arr[i] % 2 !== 0) {
+          sum += arr[i];
+          count++;
+        }
+      }
+
+      let result;
+      if (count === 0) {
+        result = "Không có số lẻ tại vị trí chẵn";
+      } else {
+        result = sum / count;
+      }
+
+      document.write("Mảng: [" + arr.join(", ") + "]<br>");
+      document.write("Trung bình số lẻ tại vị trí chẵn = " + result);
+    }
+  </script>
+</body>
+</html>

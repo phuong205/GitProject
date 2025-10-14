@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bài 2</title>
+</head>
+<body>
+  <h2>Kiểm tra cặp số <h2>
+  <label for="numA">Số A:</label>
+  <input type="number" id="numA" value="220" /><br>
+  <label for="numB">Số B:</label>
+  <input type="number" id="numB" value="284" /><br>
+  <button onclick="checkAmicable()">Kiểm tra</button>
+  <p id="result"></p>
+
+  <script>
+    function sumProperDivisors(n) {
+      let sum = 0;
+      for (let i = 1; i < n; i++) {
+        if (n % i === 0) {
+          sum += i;
+        }
+      }
+      return sum;
+    }
+
+    function areAmicable(a, b) {
+      if (a <= 0 || b <= 0) {
+        return false;
+      }
+      let sa = sumProperDivisors(a);
+      let sb = sumProperDivisors(b);
+      return (sa === b && sb === a);
+    }
+
+    function checkAmicable() {
+      let a = parseInt(document.getElementById("numA").value, 10);
+      let b = parseInt(document.getElementById("numB").value, 10);
+      let resElem = document.getElementById("result");
+      if (isNaN(a) || isNaN(b) || a < 1 || b < 1) {
+        resElem.textContent = "Hãy nhập hai số nguyên dương.";
+        return;
+      }
+      if (areAmicable(a, b)) {
+        resElem.textContent = a + " và " + b + " là cặp số thân thiết.";
+      } else {
+        resElem.textContent = a + " và " + b + " không phải cặp số thân thiết.";
+      }
+    }
+  </script>
+</body>
+</html>
